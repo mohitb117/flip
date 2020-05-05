@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Flip</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Lets Go!</string>
+    <string name="previous">Go Back!</string>
+
+    <string name="oss_plugin_hack_description">This app parses all the Open Source licenses using Google Play  and displays the licenses in a simple view to allow</string>
+    <string name="back">BACK</string>
+    <string name="oss_license_page">https://developers.google.com/android/guides/opensource</string>
+</resources>

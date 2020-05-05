@@ -24,5 +24,5 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: 3pLicense.apk
-        path: app/build/outputs/apk/debug
+        name: flip.apk
+        path: app/build/outputs/apk/debug/app-debug.apk
