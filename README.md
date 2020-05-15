@@ -1,6 +1,5 @@
-# 3PLibraryProject
+# FlipProject
 This Project is really really simple:
-1. Use the com.google.android.gms:oss-licenses-plugin
-2. Use the generated resources metadata from the plugin above.
-3. Parse the metadata and present the license information in a quick and easy way.
+1. Simple Profile Creation UI
+2. Add 3-P license attribution (because its cool!)
 4. Profit!!!!
