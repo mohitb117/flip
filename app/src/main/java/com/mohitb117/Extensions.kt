@@ -1,11 +1,17 @@
+
 package com.mohitb117
 
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import android.util.Patterns
+import android.widget.Toast
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.fragment.app.Fragment
 import com.afollestad.materialdialogs.MaterialDialog
 import com.mohitb117.flip.R
+import com.mohitb117.flip.profile.Profile
+import java.io.File
 import java.io.InputStream
 
 
@@ -23,6 +29,10 @@ fun Context.showDialog(func: MaterialDialog.() -> Unit): MaterialDialog? {
     val activity = (this as? Activity)
 
     return activity?.executeIfRunning { createDialog().show(func) }
+}
+
+fun Activity?.showToast(text: String) {
+    Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
 }
 
 /**
@@ -45,3 +55,11 @@ inline fun <T : Any> Activity.executeIfRunning(block: () -> T?): T? =
  * Convert the input stream into a string.
  */
 fun InputStream.readText() = this.bufferedReader().use { it.readText() }
+
+fun Context.getProfileImageFile(): File = File(cacheDir, "profile-image.jpeg")
+
+fun Fragment.profile()= arguments?.getParcelable<Profile>(DATA)
+
+const val DATA = "DATA"
+
+fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()

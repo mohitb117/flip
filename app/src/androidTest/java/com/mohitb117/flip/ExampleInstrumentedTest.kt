@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.mohitb117.Three3Plibrary", appContext.packageName)
+        assertEquals("com.mohitb117.flip", appContext.packageName)
     }
 }

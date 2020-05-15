@@ -7,7 +7,7 @@
     <string name="next">Lets Go!</string>
     <string name="previous">Go Back!</string>
 
-    <string name="oss_plugin_hack_description">This app parses all the Open Source licenses using Google Play  and displays the licenses in a simple view to allow</string>
+    <string name="landing_description">FlipGrid Demo App!</string>
     <string name="back">BACK</string>
     <string name="oss_license_page">https://developers.google.com/android/guides/opensource</string>
 </resources>

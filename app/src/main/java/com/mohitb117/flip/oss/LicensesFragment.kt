@@ -1,4 +1,4 @@
-package com.mohitb117.flip
+package com.mohitb117.flip.oss
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -24,6 +24,8 @@ import com.mohitb117.readText
 import com.mohitb117.showDialog
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mohitb117.flip.R
+import com.mohitb117.flip.VerticalSpaceItemDecoration
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -50,14 +52,18 @@ class LicensesFragment : Fragment() {
 
         view
             .findViewById<ImageButton>(R.id.button_second)
-            .setOnClickListener { findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment) }
+            .setOnClickListener { findNavController().navigate(R.id.action_OSSFragment_to_LandingFragment) }
 
         recyclerView = view.findViewById(R.id.dependencies)
 
         recyclerView?.apply {
             layoutManager = LinearLayoutManager(this.context)
             adapter = licensesAdapter
-            addItemDecoration(VerticalSpaceItemDecoration(resources.getDimensionPixelSize(R.dimen.vertical_spacing)))
+            addItemDecoration(
+                VerticalSpaceItemDecoration(
+                    resources.getDimensionPixelSize(R.dimen.vertical_spacing)
+                )
+            )
             isNestedScrollingEnabled = false
         }
     }
@@ -82,7 +88,10 @@ class LicensesFragment : Fragment() {
                         else -> {
                             val data = it.replace(licensePosition, "").trim()
                             val licenseData = with(licensePosition.split(":")) {
-                                LicensePosition(this[0].toInt(), this[1].toInt())
+                                LicensePosition(
+                                    this[0].toInt(),
+                                    this[1].toInt()
+                                )
                             }
                             Pair(data, licenseData)
                         }
@@ -114,7 +123,12 @@ class LicensesFragment : Fragment() {
                         it.reset()
                     }
 
-                    licensesAdapter.add(LicenseInfo(entry.key, String(buffer)))
+                    licensesAdapter.add(
+                        LicenseInfo(
+                            entry.key,
+                            String(buffer)
+                        )
+                    )
                 }
             }
 
@@ -128,7 +142,10 @@ class LicensesFragment : Fragment() {
         private val summary: TextView = view.findViewById(R.id.summary)
 
         fun bind(licenseInfo: LicenseInfo?) {
-            this.name.text = getTitle(licenseInfo?.licenseKey)
+            this.name.text =
+                getTitle(
+                    licenseInfo?.licenseKey
+                )
             this.summary.text = licenseInfo?.licenseKey
             parent.tag = licenseInfo?.licenseDetail
             parent.setOnClickListener(this)

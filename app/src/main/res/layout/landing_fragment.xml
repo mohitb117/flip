@@ -1,47 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LandingFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/start_guideline"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.15" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".LandingFragment">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/end_guideline"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.85"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
 
-    <TextView
-        android:id="@+id/landing_info"
-        android:drawableStart="@drawable/ic_info"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/oss_plugin_hack_description"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:minLines="4"
-        app:layout_constraintBottom_toTopOf="@id/next"
-        app:layout_constraintStart_toStartOf="@id/start_guideline"
-        app:layout_constraintEnd_toEndOf="@id/end_guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
 
-    <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/landing_info" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/landing_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/landing_description"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@id/next"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:background="@drawable/rounded_square"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/landing_info" />
+
+        <Button
+            android:id="@+id/openSourceLicenses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open Source \n Licenses"
+            android:background="@drawable/rounded_square"
+            android:layout_margin="20dp"
+            android:padding="4dp"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
