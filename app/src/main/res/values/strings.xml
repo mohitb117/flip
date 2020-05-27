@@ -7,7 +7,7 @@
     <string name="next">Lets Go!</string>
     <string name="previous">Go Back!</string>
 
-    <string name="landing_description">FlipGrid Demo App!</string>
+    <string name="landing_description">FlipDemoApp!</string>
     <string name="back">BACK</string>
     <string name="oss_license_page">https://developers.google.com/android/guides/opensource</string>
 </resources>
