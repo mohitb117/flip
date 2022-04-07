@@ -130,6 +130,6 @@ data class Profile(
     val password: String,
     val website: String,
     val profileImageFilePath: File?
-) : Parcelable{
+) : Parcelable {
     fun getGreeting() = "Hello, $firstName!"
 }

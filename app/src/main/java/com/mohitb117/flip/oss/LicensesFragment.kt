@@ -71,69 +71,69 @@ class LicensesFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        viewModel.viewModelScope.launch { fetchLicenses() }
+//        viewModel.viewModelScope.launch { fetchLicenses() }
     }
 
-    private suspend fun fetchLicenses() {
-        val data = withContext(Dispatchers.IO) {
-            resources
-                .openRawResource(R.raw.third_party_license_metadata)
-                .readText()
-                .trim()
-                .lines()
-                .mapNotNull {
-                    when (val licensePosition =
-                        licensePositionRegex.toRegex().find(input = it)?.value) {
-                        null -> null
-                        else -> {
-                            val data = it.replace(licensePosition, "").trim()
-                            val licenseData = with(licensePosition.split(":")) {
-                                LicensePosition(
-                                    this[0].toInt(),
-                                    this[1].toInt()
-                                )
-                            }
-                            Pair(data, licenseData)
-                        }
-                    }
-                }
-                .toMap()
-        }
-        licensesMetadata.putAll(data)
-
-        resources.openRawResource(R.raw.third_party_licenses)
-            .bufferedReader()
-            .use {
-
-                licensesMetadata.forEach { entry ->
-                    val size = entry.value.seekAheadChars
-
-                    val buffer = CharArray(size)
-
-                    it.read(buffer, 0, size)
-
-                    it.mark(1)
-
-                    // ignore the newline character
-                    val unread = it.read().toChar()
-
-                    // maybe ive gone too far, damn goog
-                    // why one off errors at the end of the list?
-                    if (unread.isLetterOrDigit()) {
-                        it.reset()
-                    }
-
-                    licensesAdapter.add(
-                        LicenseInfo(
-                            entry.key,
-                            String(buffer)
-                        )
-                    )
-                }
-            }
-
-        licensesAdapter.notifyDataSetChanged()
-    }
+//    private suspend fun fetchLicenses() {
+//        val data = withContext(Dispatchers.IO) {
+//            resources
+//                .openRawResource(R.raw.third_party_license_metadata)
+//                .readText()
+//                .trim()
+//                .lines()
+//                .mapNotNull {
+//                    when (val licensePosition =
+//                        licensePositionRegex.toRegex().find(input = it)?.value) {
+//                        null -> null
+//                        else -> {
+//                            val data = it.replace(licensePosition, "").trim()
+//                            val licenseData = with(licensePosition.split(":")) {
+//                                LicensePosition(
+//                                    this[0].toInt(),
+//                                    this[1].toInt()
+//                                )
+//                            }
+//                            Pair(data, licenseData)
+//                        }
+//                    }
+//                }
+//                .toMap()
+//        }
+//        licensesMetadata.putAll(data)
+//
+//        resources.openRawResource(R.raw.third_party_licenses)
+//            .bufferedReader()
+//            .use {
+//
+//                licensesMetadata.forEach { entry ->
+//                    val size = entry.value.seekAheadChars
+//
+//                    val buffer = CharArray(size)
+//
+//                    it.read(buffer, 0, size)
+//
+//                    it.mark(1)
+//
+//                    // ignore the newline character
+//                    val unread = it.read().toChar()
+//
+//                    // maybe ive gone too far, damn goog
+//                    // why one off errors at the end of the list?
+//                    if (unread.isLetterOrDigit()) {
+//                        it.reset()
+//                    }
+//
+//                    licensesAdapter.add(
+//                        LicenseInfo(
+//                            entry.key,
+//                            String(buffer)
+//                        )
+//                    )
+//                }
+//            }
+//
+//        licensesAdapter.notifyDataSetChanged()
+//    }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
